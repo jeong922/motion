@@ -6,12 +6,8 @@
   --text-edit-bg-color: #575757;
   --border-color: #3f3f3f;
   --shadow-color: #202020;
-  --document-bg-color: #d5e0ff;
-  --component-bg-gradient: radial-gradient(
-    circle,
-    #646464e6 0%,
-    #363636e6 100%
-  );
+  --document-bg-color: #68686850;
+  --component-bg-gradient: radial-gradient(circle, #dae4ff 0%, #81a2ff 100%);
   --smokywhite: #dddbd8;
   --black: #000000;
   --translucent-black: #00000099;
@@ -105,6 +101,32 @@ body {
 .document::-webkit-scrollbar-thumb {
   /* Safari and Chrome */
   background-color: var(--accent-color);
+}
+
+.dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  background-color: var(--document-bg-color);
+}
+
+.dialog__container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4em;
+  width: 32em;
+  background: var(--bg-accent-color);
+  background: var(--component-bg-gradient);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 20px var(--shadow-color);
 }
 
 .footer {
