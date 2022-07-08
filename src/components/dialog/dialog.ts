@@ -23,7 +23,7 @@ export class InputDialog
   constructor() {
     super(`<dialog class="dialog">
           <div class="dialog__container">
-            <button class="close">&times;</button>
+            <button class="close">&times</button>
             <div id="dialog__body"></div>
             <button class="dialog__submit">ADD</button>
           </div>

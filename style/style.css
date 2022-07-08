@@ -1,18 +1,18 @@
 :root {
-  --bg-main-color: #9eb8ff;
-  --bg-accent-color: #2d2d2d;
+  --bg-main-color: #9ed3ff;
+  --bg-accent-color: #2d2d2d60;
   --accent-color: #0c2874;
-  --text-accent-color: #ffe498;
-  --text-edit-bg-color: #575757;
+  --text-accent-color: #001636;
+  --text-edit-bg-color: #e0eeff;
+  --dialog-color: #5485b3;
   --border-color: #3f3f3f;
   --shadow-color: #202020;
-  --document-bg-color: #68686850;
+  --document-bg-color: #cdeefd;
   --component-bg-gradient: radial-gradient(circle, #dae4ff 0%, #81a2ff 100%);
   --smokywhite: #dddbd8;
   --black: #000000;
   --translucent-black: #00000099;
 }
-
 li {
   list-style: none;
   padding-left: 0;
@@ -23,21 +23,40 @@ p {
 }
 
 label {
-  color: var(--text-accent-color);
+  color: var(--black);
+}
+
+dialog {
+  border: 0;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+input,
+textarea {
+  background-color: var(--text-edit-bg-color);
+  color: var(--black);
+  font-size: 1.2em;
+  outline: none;
+  border: none;
 }
 
 * {
+  outline: 0;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  height: 100vh;
-  background-color: rgb(255, 255, 255);
-  overflow: hidden;
+  background: url('../assets/background.png') center/cover no-repeat;
+  font-family: Roboto, Oxygen, sans-serif;
   display: flex;
   justify-content: center;
+  height: 100vh;
+  overflow: hidden;
   font-size: 1.25rem;
   margin: 0;
 }
@@ -51,7 +70,8 @@ body {
 }
 
 .banner {
-  background-color: var(--bg-main-color);
+  background: var(--bg-main-color);
+  border-bottom: 1px solid var(--bg-accent-color);
   text-align: center;
 }
 
@@ -66,7 +86,8 @@ body {
   justify-content: center;
 }
 
-.control-btn {
+.control-btn,
+.dialog__submit {
   margin: 0.1em 0.2em;
   text-align: center;
   user-select: none;
@@ -76,12 +97,9 @@ body {
   font-size: 0.8rem;
   color: white;
   background-color: var(--accent-color);
-  /* border-color: var(--accent-color); */
-  border: none;
+  border-color: var(--accent-color);
   border-radius: 2px;
-  cursor: pointer;
 }
-
 .document {
   height: 100%;
   overflow-y: auto;
@@ -103,6 +121,13 @@ body {
   background-color: var(--accent-color);
 }
 
+.footer {
+  background: var(--bg-main-color);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+/* -- Dialog -- */
 .dialog {
   display: flex;
   align-items: center;
@@ -114,7 +139,7 @@ body {
   width: 100%;
   height: 100%;
   font-size: 1.2rem;
-  background-color: var(--document-bg-color);
+  background-color: var(--bg-accent-color);
 }
 
 .dialog__container {
@@ -122,15 +147,103 @@ body {
   flex-direction: column;
   padding: 0.4em;
   width: 32em;
-  background: var(--bg-accent-color);
-  background: var(--component-bg-gradient);
-  border: 1px solid var(--border-color);
+  background-color: var(--dialog-color);
   border-radius: 0.5rem;
   box-shadow: 2px 2px 20px var(--shadow-color);
 }
 
-.footer {
-  background: var(--bg-main-color);
-  border-top: 1px solid var(--border-color);
-  text-align: center;
+.form__container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.close {
+  align-self: flex-end;
+  padding: 0.2rem;
+  color: var(--accent-color);
+  font-size: 28px;
+  font-weight: bold;
+  margin: 3px;
+  transition: color 250ms ease;
+}
+
+.close:hover,
+.close:focus {
+  transform: scale(1.5);
+  color: var(--shadow-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dialog__submit {
+  align-self: flex-end;
+  padding: 0.5em 1.5em;
+}
+
+/* -- PAGE ITEM -- */
+.page-item {
+  margin: 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 6px var(--shadow-color);
+  background-color: rgb(224, 243, 255);
+}
+
+.page-item__controls {
+  padding-right: 0.5em;
+}
+
+.page-item__title {
+  color: var(--text-accent-color);
+}
+
+.page-item__body {
+  width: 100%;
+}
+
+/* -- Image & Video -- */
+.video,
+.image {
+  display: flex;
+  width: 100%;
+  height: 250px;
+}
+
+.video__container,
+.image__container {
+  flex: 60% 1 1;
+}
+
+.video__title,
+.image__title {
+  flex: 40% 1 1;
+  margin-left: 0.5em;
+}
+
+.video__iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.image__thumbnail {
+  width: 100%;
+  height: 100%;
+}
+
+/* -- Note -- */
+.note {
+  padding: 0.5em;
+}
+/* -- TODO -- */
+.todo {
+  padding: 0.5em;
+}
+
+.todo__list,
+.todo-label {
+  padding: 1em;
+  color: var(--smokywhite);
 }
